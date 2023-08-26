@@ -1,4 +1,6 @@
 package me.dio.copa.catar.features
 
-class MainViewModel {
+import javax.inject.Inject
+
+class MainViewModel{
 }

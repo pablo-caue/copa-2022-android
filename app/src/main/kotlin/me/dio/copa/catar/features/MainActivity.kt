@@ -11,12 +11,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import dagger.hilt.android.AndroidEntryPoint
 import me.dio.copa.catar.ui.theme.Copa2022Theme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        observeActions()
         setContent {
             Copa2022Theme {
                 // A surface container using the 'background' color from the theme
@@ -24,23 +27,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                     Greeting("Android")
+
                 }
             }
         }
     }
 
-}
+    private fun observeActions() {
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Composable
-@Preview(showBackground = true)
-fun DefaultPreview() {
-    Copa2022Theme {
-        Greeting("Android")
     }
 }
