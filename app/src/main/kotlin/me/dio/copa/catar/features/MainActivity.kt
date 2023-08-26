@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
         observeActions()
         setContent {
             Copa2022Theme {
+                val state by viewModel.state.collectAsState()
             }
         }
     }
