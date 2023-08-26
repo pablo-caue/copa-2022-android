@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import me.dio.copa.catar.extensions.observe
+import me.dio.copa.catar.notification.scheduler.extensions.NotificationMatcherWorker
 import me.dio.copa.catar.ui.theme.Copa2022Theme
 
 @AndroidEntryPoint
@@ -34,7 +35,15 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun observeActions() {
-
-
+        viewModel.action.observe(this){
+            when (it) {
+                is MainUiAction.MatchesNotFound -> TODO()
+                MainUiAction.Unexpected -> TODO()
+                is MainUiAction.DisableNotification ->
+                    NotificationMatcherWorker.cancel(applicationContext, it.match)
+                is MainUiAction.EnableNotification ->
+                    NotificationMatcherWorker.start(applicationContext, it.match)
+            }
+        }
     }
 }
